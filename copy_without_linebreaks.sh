@@ -3,18 +3,33 @@
 while /usr/bin/clipnotify;
 do
   selected_text="$(xsel)"
+  selected_text1="https://www.youtube.com/watch?v=NrSzf82jtPA&list=RDMc5npgP-unY&index=14"
+
   CopiedText="$(xsel -b)"
   echo $selected_text
-  regex_yt_url="/(?:https?:\/\/)?(?:(?:(?:www\.?)?youtube\.com(?:\/(?:(?:watch\?.*?(v=[^&\s]+).*)|(?:v(\/.*))|(channel\/.+)|(?:user\/(.+))|(?:results\?(search_query=.+))))?)|(?:youtu\.be(\/.*)?))/g"
+  url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+if [[ $selected_text =~ ^https:\/\/www\.youtube\.com\/watch\?v=.+ ]]; then
+    echo "La URL es válida"
+else
+    echo "La URL no es válida"
+fi
 
-  if [[ $selected_text =~ $regex_yt_url ]]; then
-    # code block to execute if string matches regex pattern
-    echo "URL valida"
- 
-  else
-    echo "URL No valida"
-    # code block to execute if string does not match regex pattern
-  fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #  if [[ $SelectedText != *"file:///"* ]]; then
 #    ModifiedTextPrimary="$(echo "$SelectedText" | tr -s '\n' ' ')"
 #    echo -n "$ModifiedTextPrimary" | xsel -i
@@ -23,4 +38,4 @@ do
 #    ModifiedTextClipboard="$(echo "$CopiedText" | tr -s '\n' ' '  )"
 #    echo -n "$ModifiedTextClipboard" | xsel -bi
  # fi
-done
+
