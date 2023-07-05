@@ -1,1 +1,1 @@
-A simple url downloable videos to mp3 by copying the url 
+A simple shell script to download youtube videos to mp3 by copying the url
