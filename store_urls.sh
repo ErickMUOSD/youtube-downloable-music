@@ -1,5 +1,5 @@
 #!/bin/bash
-source config.sh
+clipnotify_path_config="/usr/bin/clipnotify"
 is_not_valid_txt_path=true
 echo "Hello friend, we need to configure a few things before we start!"
 sleep 3
@@ -17,15 +17,16 @@ sleep 2
 echo "Perfect! listening for clipboard's events"
 #this clipnotify_path comes from config.sh file
 while $clipnotify_path_config; do
-  selected_text="$(xsel)"
-  # CopiedText="$(xsel -b)"
-  echo "$selected_text"
-  if [[ $selected_text =~ ^https:\/\/www\.youtube\.com\/watch\?v=.+ ]]; then
+#  selected_text="$(xsel)"
+   CopiedText="$(xsel -b --trim)"
+  echo "$CopiedText"
+  if [[ $CopiedText =~ ^https:\/\/www\.youtube\.com\/watch\?v=.+ ]]; then
     echo "La URL es válida"
     #there is no need to check if a file exists
     #the line below will create anyway
     #copy the selected url to a file
-    echo "$selected_text" >>"$file_with_urls"
+    echo "$CopiedText" >>"$file_with_urls"
+    echo -n '' | xsel -bi
   else
     echo "La URL no es válida"
   fi
